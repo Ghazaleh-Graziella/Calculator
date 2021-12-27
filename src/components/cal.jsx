@@ -10,11 +10,19 @@ const Cal = () => {
     setCurrent("");
   };
 
+  //Sign method
+  const sign = () => {
+    setCurrent(current.charAt(0) === "-" ? current.slice(1) : `-${current}`);
+  };
+
   return (
     <div className="calculator">
       <div className="display">{current || "0"}</div>
       <div className="btn" onClick={clear}>
         AC
+      </div>
+      <div className="btn" onClick={sign}>
+        +/-
       </div>
     </div>
   );
