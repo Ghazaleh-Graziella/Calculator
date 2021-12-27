@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useState } from "react";
+import "./cal.scss";
 
-const cal = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const Cal = () => {
+  //States
+  const [current, setCurrent] = useState("");
 
-export default cal
+  //AC method
+  const clear = () => {
+    setCurrent("");
+  };
+
+  return (
+    <div className="calculator">
+      <div className="display">{current || "0"}</div>
+      <div className="btn" onClick={clear}>
+        AC
+      </div>
+    </div>
+  );
+};
+
+export default Cal;
