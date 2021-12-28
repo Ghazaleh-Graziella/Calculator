@@ -8,6 +8,12 @@ const Cal = () => {
   const [previous, setPrevious] = useState(null);
   const [operatorClicked, setOperatorClicked] = useState(false);
 
+  //SetPrevious method
+  const handleSetPrev = () => {
+    setPrevious(current);
+    setOperatorClicked(false);
+  };
+
   //AC method
   const clear = () => {
     setCurrent("");
@@ -26,7 +32,7 @@ const Cal = () => {
   //Divide method
   const divide = () => {
     setOperator((a, b) => a / b);
-    setPrevious();
+    handleSetPrev();
   };
 
   //Append method
@@ -41,19 +47,19 @@ const Cal = () => {
   //Times method
   const times = () => {
     setOperator((a, b) => a * b);
-    setPrevious();
+    handleSetPrev();
   };
 
   //Minus method
   const minus = () => {
     setOperator((a, b) => a - b);
-    setPrevious();
+    handleSetPrev();
   };
 
   //Add method
   const add = () => {
     setOperator((a, b) => a + b);
-    setPrevious();
+    handleSetPrev();
   };
 
   //Dot method
@@ -62,6 +68,7 @@ const Cal = () => {
       append(".");
     }
   };
+
   return (
     <div className="calculator">
       <div className="display">{current || "0"}</div>
