@@ -1,2 +1,1 @@
-export { default }
-from "./cal";
+export { default }from "./cal";
