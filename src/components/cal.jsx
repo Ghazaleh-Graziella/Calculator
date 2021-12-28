@@ -69,6 +69,12 @@ const Cal = () => {
     }
   };
 
+  //Equal method
+  const equal = () => {
+    setCurrent(operator(parseFloat(current), parseFloat(previous)));
+    setPrevious(null);
+  };
+  
   return (
     <div className="calculator">
       <div className="display">{current || "0"}</div>
@@ -125,6 +131,9 @@ const Cal = () => {
       </div>
       <div className="btn" onClick={dot}>
         .
+      </div>
+      <div className="btn operator " onClick={equal}>
+        =
       </div>
     </div>
   );
