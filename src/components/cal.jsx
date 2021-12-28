@@ -55,6 +55,13 @@ const Cal = () => {
     setOperator((a, b) => a + b);
     setPrevious();
   };
+
+  //Dot method
+  const dot = () => {
+    if (current.indexOf(".") === -1) {
+      append(".");
+    }
+  };
   return (
     <div className="calculator">
       <div className="display">{current || "0"}</div>
@@ -105,6 +112,12 @@ const Cal = () => {
       </div>
       <div className="btn operator " onClick={add}>
         +
+      </div>
+      <div className="btn zero" onClick={() => append("0")}>
+        0
+      </div>
+      <div className="btn" onClick={dot}>
+        .
       </div>
     </div>
   );
