@@ -49,6 +49,12 @@ const Cal = () => {
     setOperator((a, b) => a - b);
     setPrevious();
   };
+
+  //Add method
+  const add = () => {
+    setOperator((a, b) => a + b);
+    setPrevious();
+  };
   return (
     <div className="calculator">
       <div className="display">{current || "0"}</div>
@@ -87,6 +93,18 @@ const Cal = () => {
       </div>
       <div className="btn operator " onClick={minus}>
         -
+      </div>
+      <div className="btn" onClick={() => append("1")}>
+        1
+      </div>
+      <div className="btn" onClick={() => append("2")}>
+        2
+      </div>
+      <div className="btn" onClick={() => append("3")}>
+        3
+      </div>
+      <div className="btn operator " onClick={add}>
+        +
       </div>
     </div>
   );
