@@ -8,12 +8,6 @@ const Cal = () => {
   const [previous, setPrevious] = useState(null);
   const [operatorClicked, setOperatorClicked] = useState(false);
 
-  //SetPrevious method
-  const handleSetPrev = () => {
-    setPrevious(current);
-    setOperatorClicked(false);
-  };
-
   //AC method
   const clear = () => {
     setCurrent("");
@@ -29,19 +23,31 @@ const Cal = () => {
     setCurrent(`${parseFloat(current) / 100}`);
   };
 
+  //Append method
+  const append = (number) => {
+    if (operatorClicked === true) {
+      setCurrent(" ");
+      setOperatorClicked(false);
+    }
+    setCurrent(`${current}` + `${number}`);
+  };
+  //Dot method
+  const dot = () => {
+    if (current.indexOf(".") === -1) {
+      append(".");
+    }
+  };
+
+  //SetPrevious method
+  const handleSetPrev = () => {
+    setPrevious(current);
+    setOperatorClicked(true);
+  };
+
   //Divide method
   const divide = () => {
     setOperator((a, b) => a / b);
     handleSetPrev();
-  };
-
-  //Append method
-  const append = (number) => {
-    if (operatorClicked) {
-      setCurrent("");
-      setOperatorClicked(false);
-    }
-    setCurrent(current + number);
   };
 
   //Times method
@@ -59,22 +65,15 @@ const Cal = () => {
   //Add method
   const add = () => {
     setOperator((a, b) => a + b);
+    console.log("add: ", operator);
     handleSetPrev();
-  };
-
-  //Dot method
-  const dot = () => {
-    if (current.indexOf(".") === -1) {
-      append(".");
-    }
   };
 
   //Equal method
   const equal = () => {
-    setCurrent(operator(parseFloat(current), parseFloat(previous)));
+    setCurrent(setOperator(parseFloat(current), parseFloat(previous)));
     setPrevious(null);
   };
-  
   return (
     <div className="calculator">
       <div className="display">{current || "0"}</div>
