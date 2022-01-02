@@ -4,6 +4,7 @@ import "./cal.scss";
 const Cal = () => {
   //States
   const [current, setCurrent] = useState("");
+  const [viewNumber, setViewNumber] = useState(0);
   const [operator, setOperator] = useState(null);
   const [previous, setPrevious] = useState(null);
   const [operatorClicked, setOperatorClicked] = useState(false);
@@ -11,6 +12,7 @@ const Cal = () => {
   //AC method
   const clear = () => {
     setCurrent("");
+    setViewNumber(0);
   };
 
   //Sign method
@@ -25,11 +27,11 @@ const Cal = () => {
 
   //Append method
   const append = (number) => {
-    if (operatorClicked === true) {
-      setCurrent(" ");
+    if (operatorClicked) {
+      setCurrent("");
       setOperatorClicked(false);
     }
-    setCurrent(`${current}` + `${number}`);
+    setViewNumber(number)
   };
   //Dot method
   const dot = () => {
@@ -58,25 +60,24 @@ const Cal = () => {
 
   //Minus method
   const minus = () => {
-    setOperator((a, b) => a - b);
-    handleSetPrev();
+    setCurrent(current !== "" ? parseInt(current) - parseInt(viewNumber) : viewNumber);
   };
 
   //Add method
   const add = () => {
     setOperator((a, b) => a + b);
-    console.log("add: ", operator);
     handleSetPrev();
   };
 
   //Equal method
   const equal = () => {
     setCurrent(setOperator(parseFloat(current), parseFloat(previous)));
+    setViewNumber(current)
     setPrevious(null);
   };
   return (
     <div className="calculator">
-      <div className="display">{current || "0"}</div>
+      <div className="display">{viewNumber || "0"}</div>
       <div className="btn" onClick={clear}>
         AC
       </div>
