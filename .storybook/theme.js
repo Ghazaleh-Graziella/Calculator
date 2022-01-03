@@ -1,39 +1,39 @@
 // .storybook/YourTheme.js
 
-import { create } from '@storybook/theming';
-
+import { create } from "@storybook/theming";
+import logo from "./assets/img/logo.png"
 export default create({
-  base: 'light',
+  base: "light",
 
-  colorPrimary: 'hotpink',
-  colorSecondary: 'deepskyblue',
+  colorPrimary: "#32502E",
+  colorSecondary: "rgb(64, 99, 67)",
 
   // UI
-  appBg: 'white',
-  appContentBg: 'silver',
-  appBorderColor: 'grey',
+  appBg: "rgb(166, 207, 152)",
+  appContentBg: "rgb(243, 239, 204)",
+  appBorderColor: "rgb(243, 239, 204)",
   appBorderRadius: 4,
 
   // Typography
   fontBase: '"Open Sans", sans-serif',
-  fontCode: 'monospace',
+  fontCode: "monospace",
 
-  // Text colors
-  textColor: 'black',
-  textInverseColor: 'rgba(255,255,255,0.9)',
+  // Text colorsrgb(64, 99, 67)
+  textColor: "rgb(64, 99, 67)",
+  textInverseColor: "rgba(255,255,255,0.9)",
 
   // Toolbar default and active colors
-  barTextColor: 'silver',
-  barSelectedColor: 'black',
-  barBg: 'hotpink',
+  barTextColor: "rgb(236, 231, 180)",
+  barSelectedColor: "rgb(236, 231, 180)",
+  barBg: "rgb(50, 80, 46)",
 
   // Form colors
-  inputBg: 'white',
-  inputBorder: 'silver',
-  inputTextColor: 'black',
+  inputBg: "white",
+  inputBorder: "silver",
+  inputTextColor: "black",
   inputBorderRadius: 4,
 
-  brandTitle: 'My custom storybook',
-  brandUrl: 'https://example.com',
-  brandImage: 'https://place-hold.it/350x150',
+  brandTitle: "My custom storybook",
+  brandUrl: "https://example.com",
+  brandImage: logo,
 });
