@@ -52,19 +52,32 @@ const TodoList = () => {
   };
 
   return (
-    <div className="todo-app">
-      <div>
-        <h1>What's the task for Today?</h1>
-        <TodoForm onSubmit={addTodo} />
-        <Todo
-          todos={todos}
-          completeTodo={completeTodo}
-          updateTodo={updateTodo}
-          removeTodo={removeTodo}
-        />
-        <Modal />
+    <>
+      <div className="todo-app">
+        <div>
+          <h1>What's the task for Today?</h1>
+          <TodoForm onSubmit={addTodo} />
+          <Todo
+            todos={todos}
+            completeTodo={completeTodo}
+            updateTodo={updateTodo}
+            removeTodo={removeTodo}
+          />
+        </div>
       </div>
-    </div>
+      <Modal
+        className="modal"
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      >
+        <h2>Ooops!</h2>
+        <p>It's look like you already add this task...</p>
+        <button className="modal-btn" onClick={() => setModalIsOpen(false)}>
+          {" "}
+          I Know
+        </button>
+      </Modal>
+    </>
   );
 };
 

@@ -8,6 +8,11 @@
     width: 320px;
     background: transparent;
     color: #fff;
+
+    &::placeholder {
+      color: #aa80aa;
+    }
+
     .edit {
       border: 2px solid #149fff;
     }
@@ -25,5 +30,14 @@
     );
     color: white;
     text-transform: capitalize;
+
+    .edit {
+      background: linear-gradient(
+        90deg,
+        rgba(20, 159, 255, 1) 0%,
+        rgba(17, 122, 255, 1) 100%
+      );
+      padding: 16px 22px;
+    }
   }
 }

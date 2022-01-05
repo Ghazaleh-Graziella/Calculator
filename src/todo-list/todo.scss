@@ -15,6 +15,21 @@
   border-radius: 5px;
   width: 90%;
 
+  &:nth-child(4n+1){
+    background: rgb(20,62,145);
+    background: linear-gradient(39deg, rgba(20,62,145,1) 4%, rgba(227,11,11,1) 45%, rgba(0,255,222,1) 100%);
+  }
+
+  &:nth-child(4n+2){
+    background: rgb(94,4,4);
+    background: linear-gradient(39deg, rgba(94,4,4,1) 4%, rgba(243,245,3,1) 45%, rgba(94,0,255,1) 100%);
+  }
+
+  &:nth-child(4n+3){
+    background: rgb(44,164,112);
+    background: linear-gradient(39deg, rgba(44,164,112,1) 7%, rgba(245,3,207,1) 42%, rgba(9,157,228,1) 100%);
+  }
+
   .complete {
     text-decoration: line-through;
     opacity: 0.4;
