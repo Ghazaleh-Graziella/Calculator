@@ -5,9 +5,7 @@ const Cal = () => {
   //States
   const [current, setCurrent] = useState("");
   const [viewNumber, setViewNumber] = useState(0);
-  const [operator, setOperator] = useState(null);
-  const [previous, setPrevious] = useState(null);
-  const [operatorClicked, setOperatorClicked] = useState(false);
+  const [operator, setOperator] = useState("");
 
   //AC method
   const clear = () => {
@@ -27,11 +25,36 @@ const Cal = () => {
 
   //Append method
   const append = (number) => {
-    if (operatorClicked) {
-      setCurrent("");
-      setOperatorClicked(false);
+    switch (operator) {
+      case "+":
+        setCurrent(
+          current !== "" ? parseInt(current) + parseInt(number) : number
+        );
+        setViewNumber(number);
+        break;
+      case "-":
+        setCurrent(
+          current !== "" ? parseInt(current) - parseInt(number) : number
+        );
+        setViewNumber(number);
+        break;
+      case "*":
+        setCurrent(
+          current !== "" ? parseInt(current) * parseInt(number) : number
+        );
+        setViewNumber(number);
+        break;
+      case "/":
+        setCurrent(
+          current !== "" ? parseInt(current) / parseInt(number) : number
+        );
+        setViewNumber(number);
+        break;
+      default:
+        setViewNumber(number);
+        setCurrent(number);
+        break;
     }
-    setViewNumber(number)
   };
   //Dot method
   const dot = () => {
@@ -40,44 +63,34 @@ const Cal = () => {
     }
   };
 
-  //SetPrevious method
-  const handleSetPrev = () => {
-    setPrevious(current);
-    setOperatorClicked(true);
-  };
-
   //Divide method
   const divide = () => {
-    setOperator((a, b) => a / b);
-    handleSetPrev();
+    setOperator("/");
   };
 
   //Times method
   const times = () => {
-    setOperator((a, b) => a * b);
-    handleSetPrev();
+    setOperator("*");
   };
 
   //Minus method
   const minus = () => {
-    setCurrent(current !== "" ? parseInt(current) - parseInt(viewNumber) : viewNumber);
+    setOperator("-");
   };
 
   //Add method
   const add = () => {
-    setOperator((a, b) => a + b);
-    handleSetPrev();
+    setOperator("+");
   };
 
   //Equal method
   const equal = () => {
-    setCurrent(setOperator(parseFloat(current), parseFloat(previous)));
-    setViewNumber(current)
-    setPrevious(null);
+    setOperator(parseFloat(current));
+    setViewNumber(current);
   };
   return (
     <div className="calculator">
-      <div className="display">{viewNumber || "0"}</div>
+      <div className="display">{viewNumber}</div>
       <div className="btn" onClick={clear}>
         AC
       </div>
